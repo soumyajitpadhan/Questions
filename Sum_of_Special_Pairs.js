@@ -3,7 +3,8 @@ function isPrime(n) {
         return false;
     }
     else {
-        for (let i = 2; i < n; i++) {
+        // for (let i = 2; i < n; i++) { //O(n)
+        for (let i = 2; i * i <= n; i++) { //O(√n)
             if (n % i === 0) {
                 return false;
             }
