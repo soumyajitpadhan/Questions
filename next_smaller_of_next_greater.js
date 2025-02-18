@@ -43,19 +43,29 @@ function nextSmallerOfNextGreater(arr, n) {
     let stack = [];
 
     // Step 1: Find Next Greater Element (NGE) for each element
-    for (let i = 0; i < n; i++) {
-        while (stack.length > 0 && arr[stack[stack.length - 1]] < arr[i]) {
-            nextGreater[stack.pop()] = i;
+    for (let i = n - 1; i >= 0; i--) {
+        while (stack.length > 0 && arr[stack[stack.length - 1]] <= arr[i]) {
+            stack.pop();
+        }
+
+        if (stack.length > 0) {
+            nextGreater[i] = stack[stack.length - 1];
         }
         stack.push(i);
     }
 
     stack = [];
+
     // Step 2: Find Next Smaller Element (NSE) for each NGE
-    for (let i = 0; i < n; i++) {
-        while (stack.length > 0 && arr[stack[stack.length - 1]] > arr[i]) {
-            nextSmaller[stack.pop()] = arr[i];
+    for (let i = n - 1; i >= 0; i--) {
+        while (stack.length > 0 && arr[stack[stack.length - 1]] >= arr[i]) {
+            stack.pop();
         }
+
+        if (stack.length > 0) {
+            nextSmaller[i] = arr[stack[stack.length - 1]];
+        }
+
         stack.push(i);
     }
 
