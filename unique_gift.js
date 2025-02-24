@@ -13,14 +13,14 @@ function uniqueGifts(gifts) {
             uniqueQueue.push(gifts[i]);
         }
 
-        while(uniqueQueue.length > 0 && frequency[uniqueQueue[0]] > 1){
+        while (uniqueQueue.length > 0 && frequency[uniqueQueue[0]] > 1) {
             uniqueQueue.shift();
         }
 
-        if(uniqueQueue.length > 0){
+        if (uniqueQueue.length > 0) {
             result += uniqueQueue[0];
         }
-        else{
+        else {
             result += '#';
         }
     }
